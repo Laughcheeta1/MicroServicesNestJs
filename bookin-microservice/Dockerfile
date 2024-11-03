@@ -13,9 +13,10 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 3002
-
 RUN npm run build
 
 CMD ["npm", "run", "start"]
+
+# Expose the port the app runs on
+EXPOSE 3001
+
