@@ -7,6 +7,7 @@ import { LiquorModule } from './liquor/liquor.module';
 import { OrderModule } from './order/order.module';
 import { Liquor } from './liquor/entities/liquor.entity';
 import { Order } from './order/entities/order.entity';
+import { NatsModule } from './transports/nats.module';
 
 @Module({
   imports: [
@@ -22,9 +23,9 @@ import { Order } from './order/entities/order.entity';
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      port: 5433,
-      username: 'user',
-      password: 'password',
+      port: 5432,
+      username: 'postgres',
+      password: 'SebasPablo27',
       database: 'microservicios',
       entities: [Liquor, Order],
       synchronize: true,
@@ -32,6 +33,7 @@ import { Order } from './order/entities/order.entity';
     TypeOrmModule.forFeature([Liquor, Order]),
     LiquorModule,
     OrderModule,
+    NatsModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,19 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ClientsModule, Transport } from '@nestjs/microservices';
 import { GatewayController } from './gateway.controller';
+import { NatsModule } from '../../../bookin-microservice/src/transports/nats.module'; // Asegúrate de ajustar la ruta según sea necesario
 
 @Module({
-  imports: [
-    ClientsModule.register([
-      {
-        name: 'EVENT_SERVICE',
-        transport: Transport.NATS,
-        options: {
-          url: 'nats://localhost:4222', // NATS server URL
-        },
-      },
-    ]),
-  ],
+  imports: [NatsModule],
   controllers: [GatewayController],
 })
 export class GatewayModule {}

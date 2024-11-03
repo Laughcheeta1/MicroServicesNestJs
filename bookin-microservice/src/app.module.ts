@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { EventModule } from './event/event.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventC } from './event/entities/event.entity';
+import { NatsModule } from './transports/nats.module';
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { EventC } from './event/entities/event.entity';
       entities: [EventC], // Add your entities here
       synchronize: true, // Set to true in development only
     }),
-    TypeOrmModule.forFeature([EventC])
+    TypeOrmModule.forFeature([EventC]),
+    NatsModule
   ],
 })
 export class AppModule {}
